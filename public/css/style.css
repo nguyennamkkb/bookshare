@@ -1,0 +1,103 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #F4F4F4;
+	font-size: 20px;
+}
+.container1{
+	width: 1200px;
+	margin: auto;
+}
+.container-fluid1{
+	width: 100%;
+
+}
+.header-body{
+	height: 100px;
+}
+.row-left > img{
+	width: 300px;
+	padding:10px;
+}
+.bgc-headerbody{
+	background-color: #4285F4;
+}
+.bgc-header{
+	background-color: #189EFF;
+}
+.bg-headertop{
+	background-color: #A8B4FA;
+	height: auto;
+}
+.label{
+	margin:10px;
+
+}
+.row-left{
+	float: left;
+}
+.row-right{
+	float: right;
+}
+.row{
+	height: 30px;
+	padding-top: 5px;
+}
+.row-center{
+	float: left;
+	width: 100px;
+}
+.col-1{
+	width: 100px;
+}
+.col-2{
+	width: 200px;
+}
+.col-3{
+	width: 300px;
+}
+.col-4{
+	width: 400px;
+}
+.col-5{
+	width: 500px;
+}
+.col-6{
+	width: 600px;
+}
+.col-7{
+	width: 700px;
+}
+.col-8{
+	width: 800px;
+}
+.col-9{
+	width: 900px;
+}
+.col-10{
+	width: 1000px;
+}
+.col-11{
+	width: 1100px;
+}
+.col{
+	float: left;
+}
+.trang{
+	color: #FFFFFF;
+}
+.trang a{
+	color: #FFFFFF;
+}
+.xanh{
+	background-color: #4285F4;
+}
+.margin{
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+.xanhdam{
+	background-color: #015FFA;
+}
