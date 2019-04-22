@@ -62,69 +62,56 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="product__info__detailed">
-				<hr style="margin-bottom: 20px;">
-				<div class="tab__container">
-					<!-- Start Single Tab Content -->
-					<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
-						<div class="description__attribute">
-							<div class="wn__related__product">
-								<div class="section__title text-center">
-									<h2 class="title__be--2">Cửa hàng cá nhân</h2>
-								</div>
-								<div class="row mt--60">
-									<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
-										<!-- Start Single Product -->
-										@foreach ($pro as $pro)
-										<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
-											<div class="product__thumb">
-												<a class="first__img" href="{{ url('product/'.$pro->id.'/detail') }}"><img src="{{asset('uploads/product/'.$pro->image)}}" alt="product image" style="width: 270px;height: 270px;"></a>
-												<
-												
-											</div>
-											<div class="product__content content--center content--center">
-												<h4><a href="single-product.html">{{$pro->name}}</a></h4>
-												<ul class="prize d-flex">
-													<li>{{$pro->price}}</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-															<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-															<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-														</ul>
-													</div>
-												</div>
-												<div class="product__hover--content">
-													<ul class="rating d-flex">
-														<li class="on"><i class="fa fa-star-o"></i></li>
-														<li class="on"><i class="fa fa-star-o"></i></li>
-														<li class="on"><i class="fa fa-star-o"></i></li>
-														<li><i class="fa fa-star-o"></i></li>
-														<li><i class="fa fa-star-o"></i></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										@endforeach
-										
-										<!-- Start Single Product -->
-										
-									</div>
-								</div>
+			<br><br>
+			<div class="row">
+
+				<!-- Start Single Product -->
+				@if(isset($pro))
+				@foreach($pro as $key)
+				<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12" >
+					<div class="product__thumb"  >
+						<a class="first__img" href="{{ url('product/'.$key->id.'/detail') }}"  style="width: 269px;height: 210px; display: block;margin-left: auto;margin-right: auto;"><img src="{{url('uploads/product/'.$key->image)}}" alt="product image" style="height: 210px;width: auto; display: block;margin-left: auto;margin-right: auto;" ></a>
+
+					</div>
+					<div class="product__content content--center">
+						<h4><a href="single-product.html">{{$key->name}}</a></h4>
+						<ul class="prize d-flex">
+							<li>{{$key->price}} VND</li>
+							<li class="old_prize">$35.00</li>
+						</ul>
+						<div class="action">
+							<div class="actions_inner">
+								<ul class="add_to_links">
+									<li><a class="wishlist" href="{{ url('cart/add/'.$key->id) }}"><i class="bi bi-shopping-cart-full"></i></a></li>
+									<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+									<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+								</ul>
 							</div>
 						</div>
+						<div class="product__hover--content">
+							<ul class="rating d-flex">
+								<li class="on"><i class="fa fa-star-o"></i></li>
+								<li class="on"><i class="fa fa-star-o"></i></li>
+								<li class="on"><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+							</ul>
+						</div>
 					</div>
-					
-
 				</div>
+				@endforeach
+				@endif
 			</div>
+			<!-- Start Single Product -->
 
 		</div>
+
+
 	</div>
+</div>
+
+</div>
+</div>
 </div>
 
 

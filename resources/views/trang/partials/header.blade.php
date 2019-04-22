@@ -12,45 +12,42 @@
         <nav class="mainmenu__nav">
           <ul class="meninmenu d-flex justify-content-start" >
             <li class="drop with--one--item"><a href="{{ url('/') }}">Home</a></li>
-            
-          </li>
-          <li class="drop"><a href="{{ url('/') }}" >Books</a>
-            <div class="megamenu dropdown">
-              <ul class="item " style="color: black">
-                <li class="title">Categories</li>
-                @if (@isset ($cate))
-                
-                @foreach ($cate as $key)
-                <li><a href="{{ url('?keywordcate='.$key->id) }}">{{$key->name}} </a></li>
-                @endforeach
-                @endif
+            <li class="drop"><a href="{{ url('/') }}" >Books</a>
+              <div class="megamenu dropdown">
+                <ul class="item " style="color: black">
+                  <li class="title">Categories</li>
+                  @if (@isset ($cate))
 
-              </ul>
-            </div>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-          @if (Route::has('login'))
-          @if (Auth::user())
-          <li class=""><a href="{{ url('booksharecus/'.Auth::user()->id) }}">My Shop</a>
-            @endif
-            
-            <li class=""><a href="{{ url('customer/sharebook/create') }}">Share book</a>
-              @auth
-              @else
-              <li><a href="{{ route('login') }}">Login</a></li> 
-              @if (Route::has('register'))
-              <li><a href="{{ route('register') }}">Register</a></li>
+                  @foreach ($cate as $key)
+                  <li><a href="{{ url('?keywordcate='.$key->id) }}">{{$key->name}} </a></li>
+                  @endforeach
+                  @endif
+
+                </ul>
+              </div>
+            </li>
+            @if (Route::has('login'))
+            @if (Auth::user()->id_role <> 2)
+            <li class=""><a href="{{ url('booksharecus/'.Auth::user()->id) }}">My Shop</a>
               @endif
-              @endauth
-              @endif
+
+              <li class=""><a href="{{ url('customer/sharebook/create') }}">Share book</a>
+                @auth
+                @else
+                <li><a href="{{ route('login') }}">Login</a></li> 
+                @if (Route::has('register'))
+                <li><a href="{{ route('register') }}">Register</a></li>
+                @endif
+                @endauth
+                @endif
+              </li>
             </ul>
           </nav>
         </div>
         <div class="col-md-8 col-sm-8 col-5 col-lg-2">
           <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-            <li class="shop_search"><a class="search__active" href="#"></a></li>
-            <li class="wishlist"><a href="#"></a></li>
-            <li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">{{Cart::count()}}</span></a>
+            <li class="shop_search"><a class="search__active" href="#" style="margin-right: 15px"></a></li>
+            <li class="shopcart"><a class="cartbox_active" href="#" style="margin-right: 15px"><span class="product_qun">{{Cart::count()}}</span></a>
               <!-- Start Shopping Cart -->
               <div class="block-minicart minicart__active">
                 <div class="minicart-content-wrapper">
@@ -107,8 +104,8 @@
                           <li><a href="{{ url('profile/'.Auth::user()->id.'/detail') }}">{{Auth::user()->name}}</a></li>
                           <li><a href="{{ url('customer/myorder') }}">Đơn hàng cùa tôi</a></li>
                         </ul>
-                        
-                        
+
+
                       </strong>
                       <div class="switcher-options">
 
@@ -136,7 +133,7 @@
         </div>
       </div>
       <!-- Start Mobile Menu -->
-      
+
       <!-- End Mobile Menu -->
       <div class="mobile-menu d-block d-lg-none">
       </div>

@@ -33,7 +33,7 @@
       @foreach($bill as $bill)
       <tr>
         <td>{{ $bill->id }}</td>
-        <td>{{ $bill->user->name }}</td>
+        <td>{{ $bill->customers->name }}</td>
         <td>{{ $bill->customers->address }}</td>
         <td>{{ $bill->created_at }}</td>
         <td>{{ $bill->customers->email }}</td>

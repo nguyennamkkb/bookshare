@@ -18,6 +18,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					
 					@foreach ($items as $key)
 					<tr>
 						<td class="product-thumbnail"><a href="#"><img src="{{ asset('uploads/product/'.$key->options->image) }}" alt="product img" width="100px"></a></td>

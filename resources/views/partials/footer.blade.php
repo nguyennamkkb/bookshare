@@ -1,6 +1,16 @@
 <div class="site-footer">
-	<div class="copyright clearfix">
-		<p><b>Bootflat</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="getting-started.html">Getting Started</a>&nbsp;&bull;&nbsp;<a href="index.html">Documentation</a>&nbsp;&bull;&nbsp;<a href="https://github.com/Bootflat/Bootflat.UI.Kit.PSD/archive/master.zip">Free PSD</a>&nbsp;&bull;&nbsp;<a href="colors.html">Color Picker</a></p>
-		<p>Code licensed under <a href="http://opensource.org/licenses/mit-license.html" target="_blank" rel="external nofollow">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" rel="external nofollow">CC BY 3.0</a>.</p>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class="copyright">
+				<div class="copy__right__inner text-left">
+					<p>Nguyễn Lương Nam	: 515100036. Khoa công nghệ thông tin và truyền thông.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class="payment text-right">
+				Xấy dựng ứng dụng đọc sách trực tuyến.
+			</div>
+		</div>
 	</div>
 </div>

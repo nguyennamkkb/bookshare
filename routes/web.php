@@ -33,6 +33,7 @@ Route::group(['prefix'=>'/'],function ()
 		Route::resource('customer/sharebook','customer\BookshareController');
 		Route::patch('customer/reviewct/{id}','customer\ProductController@postReview');
 		Route::get('customer/myorder','BillController@getMyOder');
+		Route::get('customer/detailod/{id}','BillController@getDetailOd');
 
 	});
 

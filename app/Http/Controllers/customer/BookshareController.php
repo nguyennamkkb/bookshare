@@ -217,6 +217,7 @@ class BookshareController extends Controller
     }
     public function bookshop($id)
     {
+        $cate=Category::all();
         $user=User::findOrFail($id);
         $usdt=Userdetail::where('id_user','=',$user->id)->get();
         $list=Product::where('id_user','=',$id);
@@ -224,7 +225,8 @@ class BookshareController extends Controller
         return view('trang.booksharecus.bookshare',[
             'pro'=>$list, 
             'user' =>$user,
-            'usdt' =>$usdt
+            'usdt' =>$usdt,
+            'cate' =>$cate
 
         ]);
        

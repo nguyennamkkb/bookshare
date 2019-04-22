@@ -77,18 +77,7 @@
 			</ul>
 			<ul class="shipping__method">
 				
-				<li>Shipping 
-					<ul>
-						<li>
-							<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked" type="radio">
-							<label>Flat Rate: $48.00</label>
-						</li>
-						<li>
-							<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked" type="radio">
-							<label>Flat Rate: $48.00</label>
-						</li>
-					</ul>
-				</li>
+				<li>Shipping :30k</li>
 			</ul>
 			<ul class="total__amount">
 				<li>Tổng tiền <span>{{Cart::total()}}</span></li>

@@ -14,14 +14,15 @@ class IndexController extends Controller
      */
     public function index(request $request)
     {
-        $list=Product::where('price','>',0);
+        $list=Product::where('price','>',0)->paginate(2);
         if ($request->has('keyword')) {
             $keyword=$request->keyword;
-            $list=$list->where('name','like','%'.$keyword.'%');}
-            $list=$list->orderBy('price','DESC')->get();
-            return view('trangchu.master',['list'=>$list]);
-
+            $list=$list->where('name','like','%'.$keyword.'%');
         }
+        $list=$list->orderBy('price','DESC')->get();
+        return view('trangchu.master',['list'=>$list]);
+
+    }
 
     /**
      * Show the form for creating a new resource.

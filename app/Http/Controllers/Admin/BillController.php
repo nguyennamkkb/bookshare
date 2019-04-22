@@ -107,4 +107,17 @@ class BillController extends Controller
 
         return Redirect::to('admin/bill');
     }
+    public function getMyOder(){
+        // $billInfo=Bill::find($id);
+        // $billwaiting=Bill_detail::where([
+        //     ['bill_id',$billInfo->id],
+        //     ['status_id',2],
+        // // ])->get();
+        // $billwaiting=Bill::where('status_id',2)->get();
+        // $billdelivey=Bill::where('status_id',3)->get();
+        // $billordered=Bill::where('status_id',4)->get();
+        // $billcancel=Bill::where('status_id',5)->get();
+        // $
+        
+   }
 }

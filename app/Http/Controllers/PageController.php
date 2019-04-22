@@ -17,15 +17,26 @@ class PageController extends Controller
     public function trangchu(request $request)
     {
         $cate=Category::all();
-        $list=Product::where('id_status','=',1)->paginate(12);
+        $list=Product::where('id_user',1)->orwhere('id_user',3)
+            ->paginate(2);
         if ($request->has('keyword')) {
             $keyword=$request->keyword;
-            $list=$list->where('name','like','%'.$keyword.'%');
+            $list=Product::where('name','like','%'.$keyword.'%');
+            $list=$list->orderBy('id','DESC')->paginate(2);
         }
         if ($request->has('keywordcate')) {
             $keywordcate=$request->keywordcate;
-            $list=$list->where('id_category','=',$keywordcate);
+            $list=Product::where('id_category','=',$keywordcate);
+            $list=$list->orderBy('id','DESC')->paginate(2);
         }
+        if ($request->has('sort')) {
+            $sort=$request->sort;
+
+            $list=Product::orderBy('price',$sort)->paginate(2);
+        }
+       
+        
+        // $list=$list->orderBy('id','DESC');
         return view('trang.index',[
             'list'=>$list,
             'cate'=>$cate

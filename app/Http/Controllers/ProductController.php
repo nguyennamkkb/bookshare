@@ -21,6 +21,7 @@ class ProductController extends Controller
      */
     public function index( request $request)
     {
+
      $list=Product::where('price','>',0);
      if ($request->has('keyword')) {
         $keyword=$request->keyword;

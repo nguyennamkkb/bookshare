@@ -91,10 +91,13 @@ class ProductController extends Controller
         $cm=Comment::where('id_product','=',$id)->get();
         $cate=Category::all();
         $pro=Product::findOrFail($id);
+        $allpro=Product::limit(5)->get();
+        
         return view('trang.product.detail',[
             'pro'=>$pro, 
             'cate' =>$cate, 
-            'comment'=>$cm
+            'comment'=>$cm,
+            'allpro' =>$allpro
         ]);
     }
     public function postReview(Request $request, $id)
