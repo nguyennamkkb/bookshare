@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') Admin|Trạng thái sản phẩm@endsection
+@section('title') Admin|Trạng thái sản phẩm @endsection
 @section('title2')Thêm Trạng thái sản phẩm
 <a href="{{ url("admin/status-pro/create")}}"><button type="button" class="btn btn-default btn-sm">
   <span class="glyphicon glyphicon-new-window"></span> Thêm mới

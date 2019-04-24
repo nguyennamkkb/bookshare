@@ -27,11 +27,15 @@
               </div>
             </li>
             @if (Route::has('login'))
-            @if (Auth::user()->id_role <> 2)
+            @if (Auth::user())
             <li class=""><a href="{{ url('booksharecus/'.Auth::user()->id) }}">My Shop</a>
               @endif
-
+              
+              @if(Auth::user() !== null)
+              @if(Auth::user()->id_role <> 2)
               <li class=""><a href="{{ url('customer/sharebook/create') }}">Share book</a>
+                @endif
+                @endif
                 @auth
                 @else
                 <li><a href="{{ route('login') }}">Login</a></li> 
@@ -50,6 +54,9 @@
             <li class="shopcart"><a class="cartbox_active" href="#" style="margin-right: 15px"><span class="product_qun">{{Cart::count()}}</span></a>
               <!-- Start Shopping Cart -->
               <div class="block-minicart minicart__active">
+                @if(Cart::count()==0)
+                <p style="width: 200px;padding:5px">Không có sản phẩm nào trong giỏ hàng!</p>
+                @else
                 <div class="minicart-content-wrapper">
                   <div class="micart__close">
                     <span>close</span>
@@ -91,6 +98,7 @@
                       <a class="cart__btn" href="{{ url('cart/show') }}">Xem giỏ hàng</a>
                     </div>
                   </div>
+                  @endif
                 </div>
                 <!-- End Shopping Cart -->
               </li>

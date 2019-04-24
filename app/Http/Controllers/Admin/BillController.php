@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Bill;
 use App\Bill_detail;
 use App\Status_order;
+use App\Customer;
 class BillController extends Controller
 {
     /**

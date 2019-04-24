@@ -50,21 +50,7 @@ class CartController extends Controller
     }
     public function postComplete(Request $request)
     {
-        $data=$request->all();
-        Mail::send('trang.email', $data, function ($message) {
-            $message->from('nguyennam.kkb@gmail.com', 'Bookshare');
-            $message->sender('john@johndoe.com', 'John Doe');
-
-            $message->to('john@johndoe.com', 'John Doe');
-
-            $message->cc('john@johndoe.com', 'John Doe');
-            $message->bcc('john@johndoe.com', 'John Doe');
-
-            $message->replyTo('john@johndoe.com', 'John Doe');
-
-            $message->subject('Subject');
-
-        });
+        
     }
     public function postcheckout(Request $request)
     {
@@ -79,6 +65,13 @@ class CartController extends Controller
             'phoneNumber' => 'required|digits_between:10,12'
 
         ];
+        //   $validator = Validator::make(Input::all(), $rule);
+        
+        // if ($validator->fails()) {
+        //     return redirect('/checkout')
+        //                 ->withErrors($validator)
+        //                 ->withInput();
+        // }
         
         try {
             // save
@@ -118,6 +111,11 @@ class CartController extends Controller
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+
+        
+
+       
+
     }
     public function getMyOder()
     {
