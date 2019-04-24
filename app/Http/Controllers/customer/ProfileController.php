@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth; 
 use App\Userdetail;
 use App\User;
+use App\Product;
 use App\Category;
 
 
@@ -19,9 +20,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $cate=Category::all();
-        $user=Auth::user();
-        return view('trang.profile.profile',['cate'=>$cate]);
+        // $cate=Category::all();
+        // $user=Auth::user();
+        // return view('trang.profile.profile',['cate'=>$cate]);
     }
 
     /**
@@ -94,12 +95,13 @@ class ProfileController extends Controller
     {
         $cate=Category::all();
         $user=Auth::user();
+        $pro=Product::where('id_user',$id)->get();
         $userdetail=Userdetail::where('id_user','=',$id)->get();
         return view('trang.profile.profile',[
             'user'=>$user,
             'userdt'=>$userdetail,
-            'cate'=>$cate
-
+            'cate'=>$cate,
+            'pro' => $pro
     ]);
     }
 }

@@ -72,15 +72,17 @@
 			</ul>
 			<ul class="order_product">
 				@foreach ($items as $item)
-				<li>{{$item->name}}× {{$item->qty}}<span>{{number_format($item->qty*$item->price)}}</span></li>
+				<li>{{$item->name }} × {{ $item->qty}}<span>{{number_format($item->qty*$item->price)}}</span></li>
+				
 				@endforeach        						
 			</ul>
 			<ul class="shipping__method">
 				
-				<li>Shipping :30k</li>
+				<li>Shipping : 30k</li>
 			</ul>
+			
 			<ul class="total__amount">
-				<li>Tổng tiền <span>{{Cart::total()}}</span></li>
+				<li>Tổng tiền <span>{{(int)cart::total()+30}},000</span></li>
 			</ul>
 		</div>
 

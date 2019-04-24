@@ -88,6 +88,7 @@ class BillController extends Controller
     }
     public function getMyOder()
     {
+        $cate=Category::all();
         $id=Auth::user()->id;
         // $bill = Bill::where('user_id','=',$id);
         
@@ -128,6 +129,7 @@ class BillController extends Controller
         
         $this->data['billhuy'] = $billhuy;
         $this->data['billhuy1'] = $billhuy1;
+        $this->data['cate']=$cate;
         
         
 

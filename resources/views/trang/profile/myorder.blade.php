@@ -41,7 +41,7 @@
 												<td class="product-name"><a href="{{url('customer/detailod/'.$dagiaohang->id)}}">{{$dagiaohang->id}}</a></td>
 												<td class="product-name">{{$dagiaohang->date_order}}</td>
 												<td class="product-name">{{$dagiaohang->user->name}}</td>
-												<td class="product-name">{{$dagiaohang->total}}</td>
+												<td class="product-name">{{number_format($dagiaohang->total)}}</td>
 											</tr>
 											@endforeach
 										</tbody>
@@ -79,10 +79,10 @@
 											@foreach($billdanggiao as $dagiao)
 											<tr>
 												<td class="product-name">{{$key++}}</td>
-												<td class="product-name"><a href="{{url('customer/detailod/'.$dagiao->id)}}">{{$dagiaohang->id}}</a></td>
+												<td class="product-name"><a href="{{url('customer/detailod/'.$dagiao->id)}}">{{$dagiao->id}}</a></td>
 												<td class="product-name">{{$dagiao->date_order}}</td>
 												<td class="product-name">{{$dagiao->user->name}}</td>
-												<td class="product-name">{{$dagiao->total}}</td>
+												<td class="product-name">{{number_format($dagiao->total)}}</td>
 											</tr>
 											@endforeach
 										</tbody>
@@ -120,10 +120,10 @@
 										@foreach($billcxn as $choxn)
 										<tr>
 											<td class="product-name">{{$key++}}</td>
-											<td class="product-name"><a href="{{url('customer/detailod/'.$choxn->id)}}">{{$dagiaohang->id}}</a></td>
+											<td class="product-name"><a href="{{url('customer/detailod/'.$choxn->id)}}">{{$choxn->id}}</a></td>
 											<td class="product-name">{{$choxn->date_order}}</td>
 											<td class="product-name">{{$choxn->user->name}}</td>
-											<td class="product-name">{{$choxn->total}}</td>
+											<td class="product-name">{{number_format($choxn->total)}}</td>
 										</tr>
 										@endforeach
 									</tbody>
@@ -157,10 +157,10 @@
 										@foreach($billhuy as $huy)
 										<tr>
 											<td class="product-name">{{$key++}}</td>
-											<td class="product-name"><a href="{{url('customer/detailod/'.$huy->id)}}">{{$dagiaohang->id}}</a></td>
+											<td class="product-name"><a href="{{url('customer/detailod/'.$huy->id)}}">{{$huy->id}}</a></td>
 											<td class="product-name">{{$huy->date_order}}</td>
 											<td class="product-name">{{$huy->user->name}}</td>
-											<td class="product-name">{{$huy->total}}</td>
+											<td class="product-name">{{number_format($huy->total)}}</td>
 										</tr>
 										@endforeach
 									</tbody>
