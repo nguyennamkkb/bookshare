@@ -13,6 +13,7 @@
 Route::group(['prefix'=>'/'],function ()
 {
 	Route::get('','PageController@trangchu');
+	Route::get('/vue','PageController@vue');
 	Route::get('product/{id}/detail','customer\ProductController@detail');
 	Route::get('category/{id}','PageController@getCategory');
 	Route::get('booksharecus/{id}','customer\BookshareController@bookshop');

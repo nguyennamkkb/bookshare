@@ -1640,7 +1640,8 @@ Elements Styles
 ------------------------------*/
 .setting__active {
   position: relative; }
-
+.pay__active {
+  position: relative; }
 .setting__block {
   background: #fff none repeat scroll 0 0;
   left: auto;
@@ -1653,7 +1654,22 @@ Elements Styles
   visibility: hidden;
   z-index: 10;
   padding-top: 20px; }
+  .pay__block {
+  background: #fff none repeat scroll 0 0;
+  left: auto;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 100%;
+  transition: -webkit-transform 0.8s ease 0s, transform 0.8s ease 0s, opacity 0.5s ease 0s, visibility 0.5s ease 0s;
+  visibility: hidden;
+  z-index: 10;
+  padding-top: 20px; }
   .setting__block.is-visible {
+    opacity: 1;
+    visibility: visible; }
+     .pay__block.is-visible {
     opacity: 1;
     visibility: visible; }
 .switcher-currency-trigger .switcher-dropdown {
@@ -1735,7 +1751,7 @@ Elements Styles
             text-align: left;
             text-transform: capitalize;
             font-size: 12px; }
-        .searchbar__content .content-inner .switcher-currency .switcher-options .switcher-currency-trigger .setting__menu span a {
+        .searchbar__content .content-inner .switcher-currency .switcher-options .switcher-currency-trigger .setting__menu .pay__menu span a {
           color: #797979;
           display: block;
           font-weight: normal;
@@ -1843,8 +1859,21 @@ Header Styles
 			}
     .header__area .header__sidebar__right > li.setting__bar__icon {
 	  position: relative;
+
 	}
+  .header__area .header__sidebar__right > li.pay__bar__icon {
+    position: relative;
+
+  }
+
       .header__area .header__sidebar__right > li.setting__bar__icon > a {
+        background: transparent url("images/icons/icon_setting.png") no-repeat scroll left center;
+        cursor: pointer;
+        font-size: 0;
+        height: 35px;
+        position: relative;
+        width: 30px; }
+        .header__area .header__sidebar__right > li.pay__bar__icon > a {
         background: transparent url("images/icons/icon_setting.png") no-repeat scroll left center;
         cursor: pointer;
         font-size: 0;

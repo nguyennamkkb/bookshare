@@ -54,7 +54,12 @@
           <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
             <li class="shop_search"><a class="search__active" href="#" style="margin-right: 15px"></a></li>
             <li class="shopcart"><a class="cartbox_active" href="#" style="margin-right: 15px"><span class="product_qun">{{Cart::count()}}</span></a>
+
+
               <!-- Start Shopping Cart -->
+
+
+
               <div class="block-minicart minicart__active">
                 @if(Cart::count()==0)
                 <p style="width: 200px;padding:5px">Không có sản phẩm nào trong giỏ hàng!</p>
@@ -109,32 +114,56 @@
                 <!-- End Shopping Cart -->
               </li>
               @if (Auth::user())
-              <li>
-                <div id="app">
-                  <button class="" onclick="openForm()">$$ {{money}}</button>
+               <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal"
+                style="display:inline;margin-right: 10px">
+                <span id="money">30</span> vnd
+            </button>
 
-                  <div class="form-popup" id="myForm">
-                    <div class="form-container">
-                      <H2>Nạp Tiền</H2>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-light" v-on:click="tanggt50">50.000 VND</button>
-                        <button type="button" class="btn btn-light" v-on:click="tanggt100">100.000 VND</button>
-                        <button type="button" class="btn btn-light" v-on:click="tanggt200">200.000 VND</button>
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
 
-                      </div><br> <br>
-                      <p>Hoac</p>
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nhap so tien" id="tien">
-                        <br>
-                        <div class="input-group-append">
-                          <button class="btn btn-success" type="button" @click="them">Nap tien</button>
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <H2>Nạp Tiền</H2>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                      </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-container">
+                                
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-light" onclick="tanggt50()">50.000 VND</button>
+                                    <button type="button" class="btn btn-light" onclick="tanggt100()">100.000
+                                        VND</button>
+                                    <button type="button" class="btn btn-light" onclick="tanggt200()">200.000
+                                        VND</button>
+
+                                </div><br> <br>
+                                <p>Hoac</p>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Nhap so tien" id="tien"
+                                        name="tien1">
+                                    <br>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="button" onclick="them()">Nap tien</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+
+
                     </div>
-                  </div>
                 </div>
-              </li>
-              <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+            </div>
+
+
+              <li class="setting__bar__icon"><a class="setting__active" id="myForm" href="#"></a>
                 <div class="searchbar__content setting__block">
                   <div class="content-inner">
                     <div class="switcher-currency">
@@ -209,3 +238,100 @@
       </div>
     </div>
   </div>
+  <script>
+        function tanggt50() {
+            var money = document.getElementById('money');
+            var r = confirm('Xác nhận nạp 50K vào tài khoản?');
+            if (r == true) {
+                var code = prompt("Nhập mã OTP:", "");
+                if (code == null || code == "") {
+                    alert("Thất bại!")
+                } else if (code == "nam") {
+                    document.getElementById('money').innerHTML = Number(money.innerHTML) + 50000;
+
+                    alert("thành công");
+                } else {
+                    alert("thất bại!");
+                }
+            }
+        };
+        function tanggt100() {
+            var money = document.getElementById('money');
+            var r = confirm('Xác nhận nạp 100K vào tài khoản?');
+            if (r == true) {
+                var code = prompt("Nhập mã OTP:", "");
+                if (code == null || code == "") {
+                    alert("Thất bại!")
+                } else if (code == "nam") {
+                    document.getElementById('money').innerHTML = Number(money.innerHTML) + 100000;
+                    alert("thành công");
+                } else {
+                    alert("thất bại!");
+                }
+            }
+        };
+        function tanggt200() {
+            var money = document.getElementById('money');
+            var r = confirm('Xác nhận nạp 200K vào tài khoản?');
+            if (r == true) {
+                var code = prompt("Nhập mã OTP:", "");
+                if (code == null || code == "") {
+                    alert("Thất bại!")
+                } else if (code == "nam") {
+                    document.getElementById('money').innerHTML = Number(money.innerHTML) + 200000;
+                    alert("thành công");
+                } else {
+                    alert("thất bại!");
+                }
+            }
+        };
+        function them() {
+            var money = document.getElementById('money');
+            var tien = document.getElementById('tien').value;
+            if (Number(tien) < 10000) {
+                alert('Số tiền nạp lớn hơn 10.000 vnd');
+                return false;
+            } else {
+                var r = confirm('Xác nhận nạp tiền vào tài khoản?');
+                if (r == true) {
+                    var code = prompt("Nhập mã OTP:", "");
+                    if (code == null || code == "") {
+                        alert("Thất bại!")
+                    } else if (code == "nam") {
+                        document.getElementById('money').innerHTML = Number(money.innerHTML) + Number(tien);
+                        document.getElementById('tien').value = "";
+                        alert("thành công");
+                    } else {
+                        alert("thất bại!");
+                    }
+                }
+            }
+
+        };
+        function trutien() {
+            var money = document.getElementById('money');
+            var r = confirm('Xác nhận đọc sách với giá 10.000 vnd?');
+            if(Number(money.innerHTML)<10000){
+                alert('Tài khoản của bạn không đủ để sử dụng tài liệu này, vui lòng nạp thêm tiền');
+                return false;
+            }
+            if (r == true) {
+                var code = prompt("Nhập lại mật khẩu:", "");
+                if (code == null || code == "") {
+                    alert("Thất bại!")
+                } else if (code == "matkhau") {
+                    document.getElementById('money').innerHTML = Number(money.innerHTML) - 10000;
+                    alert("thành công");
+                } else {
+                    alert("thất bại!");
+                }
+            }else {
+              return false;
+            }
+        }
+
+
+
+
+
+    </script>

@@ -23,7 +23,7 @@
 								<h5>Giá sách: <font color="#b93a3a">{{ number_format($pro->price)}} vnd</font> </h5>
 							</div>
 							<div class="box-tocart d-flex">
-								<button type="button" class="btn btn-success"><a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a></button>
+								<button type="button" class="btn btn-success" onclick="trutien()"><a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a></button>
 								<button type="button" class="btn btn-warning" style=" margin-left: 20px;"><a href="{{ url('cart/add/'.$pro->id) }}" style="color: #FFFFFF;" >Mua sách</a></button>
 								
 								

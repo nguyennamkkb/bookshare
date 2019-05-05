@@ -124,4 +124,7 @@ class PageController extends Controller
             'cate'=>$cate
         ]);
     }
+    public function vue(){
+        return view('trang.vue');
+    }
 }

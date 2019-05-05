@@ -356,7 +356,23 @@
         });
     }
     settingToggler();
+/*============= Setting Toggler ==============*/
+    // function payToggler() {
+    //     var payTrigger = $('pay__active'),
+    //       payContainer = $('.pay__block');
+    //     payTrigger.on('click', function (e) {
+    //       e.preventDefault();
+    //       payContainer.toggleClass('is-visible');
+    //     });
+    //     payTrigger.on('click', function (e) {
+    //       e.preventDefault();
+    //       payContainer.toggleClass('');
+    //     });
+    // }
+    // payToggler();
 
+
+/*=============  Slider Activation  ==============*/
 
 /*=============  Slider Activation  ==============*/
     $('.slide__activation').owlCarousel({
