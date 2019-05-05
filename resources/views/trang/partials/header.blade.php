@@ -1,3 +1,5 @@
+
+
 <header id="wn__header" class="oth-page header__area header__absolute sticky__header" >
   <div class="container-fluid">
     <div class="row">
@@ -61,16 +63,20 @@
                   <div class="micart__close">
                     <span>close</span>
                   </div>
+
                   <div class="items-total d-flex justify-content-between">
                     <span>{{Cart::count()}} Sản phẩm</span>
                     <span>Tổng tiền</span>
                   </div>
+
                   <div class="total_amount text-right">
-                    <span>{{Cart::total()}}</to>
-                    </div>
+
+                    <span>{{Cart::total()}}</span>
+
                     <div class="mini_action checkout">
                       <a class="checkout__btn" href="{{ url('cart/checkout') }}">Go to Checkout</a>
                     </div>
+
                     <div class="single__items">
                       <div class="miniproduct">
                         @foreach (Cart::content() as $key)
@@ -103,6 +109,31 @@
                 <!-- End Shopping Cart -->
               </li>
               @if (Auth::user())
+              <li>
+                <div id="app">
+                  <button class="" onclick="openForm()">$$ {{money}}</button>
+
+                  <div class="form-popup" id="myForm">
+                    <div class="form-container">
+                      <H2>Nạp Tiền</H2>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-light" v-on:click="tanggt50">50.000 VND</button>
+                        <button type="button" class="btn btn-light" v-on:click="tanggt100">100.000 VND</button>
+                        <button type="button" class="btn btn-light" v-on:click="tanggt200">200.000 VND</button>
+
+                      </div><br> <br>
+                      <p>Hoac</p>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Nhap so tien" id="tien">
+                        <br>
+                        <div class="input-group-append">
+                          <button class="btn btn-success" type="button" @click="them">Nap tien</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
               <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                 <div class="searchbar__content setting__block">
                   <div class="content-inner">
@@ -132,6 +163,10 @@
                   </div>
                 </div>
               </div>
+
+
+            </li>
+            <li>
 
 
             </li>

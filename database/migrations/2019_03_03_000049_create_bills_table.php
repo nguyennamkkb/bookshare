@@ -19,6 +19,7 @@ class CreateBillsTable extends Migration
             $table->integer('customer_id');
             $table->dateTime('date_order');
             $table->double('total');
+            $table->integer('shipping')->default(30000);
             $table->string('status_id')->default('2');
             $table->timestamps();
         });
