@@ -29,15 +29,18 @@
               </div>
             </li>
             @if (Route::has('login'))
-            @if (Auth::user())
+            @if(Auth::user() !== null)
+            @if (Auth::user()->id_role <> 2)
             <li class=""><a href="{{ url('booksharecus/'.Auth::user()->id) }}">My Shop</a>
+              @endif
               @endif
               
               @if(Auth::user() !== null)
-              @if(Auth::user()->id_role <> 2)
+
               <li class=""><a href="{{ url('customer/sharebook/create') }}">Share book</a>
+
                 @endif
-                @endif
+
                 @auth
                 @else
                 <li><a href="{{ route('login') }}">Login</a></li> 
@@ -53,6 +56,8 @@
         <div class="col-md-8 col-sm-8 col-5 col-lg-2">
           <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
             <li class="shop_search"><a class="search__active" href="#" style="margin-right: 15px"></a></li>
+            
+            @if (Auth::user())
             <li class="shopcart"><a class="cartbox_active" href="#" style="margin-right: 15px"><span class="product_qun">{{Cart::count()}}</span></a>
 
 
@@ -113,225 +118,255 @@
                 </div>
                 <!-- End Shopping Cart -->
               </li>
-              @if (Auth::user())
-               <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal"
-                style="display:inline;margin-right: 10px">
-                <span id="money">30</span> vnd
+              <!-- Button to Open the Modal -->
+              <button type="button" class="btn" data-toggle="modal" data-target="#myModal"
+              style="display:inline;margin-right: 10px">
+              <span id="money">{{Auth::user()->vi}}</span> vnd
             </button>
 
             <!-- The Modal -->
             <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+              <div class="modal-dialog">
+                <div class="modal-content">
 
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                          <H2>Nạp Tiền</H2>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <H2>Nạp Tiền</H2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="form-container">
+
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-light" onclick="tanggt50('{{Auth::user()->id}}')">50.000 VND</button>
+                        <button type="button" class="btn btn-light" onclick="tanggt100('{{Auth::user()->id}}')">100.000
+                        VND</button>
+                        <button type="button" class="btn btn-light" onclick="tanggt200('{{Auth::user()->id}}')">200.000
+                        VND</button>
+
+                      </div><br> <br>
+                      <p>Hoặc:</p>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Nhập số tiền" id="tien"
+                        name="tien1">
+                        <br>
+                        <div class="input-group-append">
+                          <button class="btn btn-success" type="button" onclick="them('{{Auth::user()->id}}')">Nạp tiền</button>
                         </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="form-container">
-                                
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-light" onclick="tanggt50()">50.000 VND</button>
-                                    <button type="button" class="btn btn-light" onclick="tanggt100()">100.000
-                                        VND</button>
-                                    <button type="button" class="btn btn-light" onclick="tanggt200()">200.000
-                                        VND</button>
-
-                                </div><br> <br>
-                                <p>Hoac</p>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Nhap so tien" id="tien"
-                                        name="tien1">
-                                    <br>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-success" type="button" onclick="them()">Nap tien</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal footer -->
-
-
+                      </div>
                     </div>
+                  </div>
+
+                  <!-- Modal footer -->
+
+
                 </div>
+              </div>
             </div>
 
 
-              <li class="setting__bar__icon"><a class="setting__active" id="myForm" href="#"></a>
-                <div class="searchbar__content setting__block">
-                  <div class="content-inner">
-                    <div class="switcher-currency">
-                      <strong class="label switcher-label">
-                        <ul>
-                          <li><a href="{{ url('profile/'.Auth::user()->id.'/detail') }}">{{Auth::user()->name}}</a></li>
-                          <li><a href="{{ url('customer/myorder') }}">Đơn hàng cùa tôi</a></li>
-                        </ul>
+            <li class="setting__bar__icon"><a class="setting__active" id="myForm" href="#"></a>
+              <div class="searchbar__content setting__block">
+                <div class="content-inner">
+                  <div class="switcher-currency">
+                    <strong class="label switcher-label">
+                      <ul>
+                        <li><a href="{{ url('profile/'.Auth::user()->id.'/detail') }}">{{Auth::user()->name}}</a></li>
+                        <li><a href="{{ url('customer/myorder') }}">Đơn hàng cùa tôi</a></li>
+                      </ul>
 
 
-                      </strong>
-                      <div class="switcher-options">
+                    </strong>
+                    <div class="switcher-options">
 
-                        <div class="switcher-currency-trigger">
-                          <a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-                          {{ __('Logout') }}
-                        </a>
+                      <div class="switcher-currency-trigger">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                      </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          @csrf
-                        </form>
-                      </div>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
 
-            </li>
-            <li>
+          </li>
+          <li>
 
 
-            </li>
-            @endif
+          </li>
+          @endif
 
-          </ul>
+        </ul>
+      </div>
+    </div>
+    <!-- Start Mobile Menu -->
+
+    <!-- End Mobile Menu -->
+    <div class="mobile-menu d-block d-lg-none">
+    </div>
+    <!-- Mobile Menu -->  
+  </div>    
+</header>
+<!-- //Header -->
+<!-- Start Search Popup -->
+<div class="box-search-content search_active block-bg close__top">
+
+  {!! Form::open(['method'=>'get','url'=>'/','class'=>'minisearch','id'=>'search_mini_form']) !!}
+  <div class="field__search">
+    {!! Form::text('keyword','',['placeholder'=>'Nhập tên sách...']) !!}
+  </div>
+  {!! Form::close() !!}
+  <div class="close__wrap">
+    <span>close</span>
+  </div>
+</div>
+<!-- End Search Popup -->
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--6">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="bradcaump__inner text-center">
+
         </div>
       </div>
-      <!-- Start Mobile Menu -->
-
-      <!-- End Mobile Menu -->
-      <div class="mobile-menu d-block d-lg-none">
-      </div>
-      <!-- Mobile Menu -->  
-    </div>    
-  </header>
-  <!-- //Header -->
-  <!-- Start Search Popup -->
-  <div class="box-search-content search_active block-bg close__top">
-
-    {!! Form::open(['method'=>'get','url'=>'/','class'=>'minisearch','id'=>'search_mini_form']) !!}
-    <div class="field__search">
-      {!! Form::text('keyword','',['placeholder'=>'Nhập tên sách...']) !!}
-    </div>
-    {!! Form::close() !!}
-    <div class="close__wrap">
-      <span>close</span>
     </div>
   </div>
-  <!-- End Search Popup -->
-  <!-- Start Bradcaump area -->
-  <div class="ht__bradcaump__area bg-image--6">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="bradcaump__inner text-center">
+</div>
+<script>
+  function tanggt50(id) {
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-        function tanggt50() {
-            var money = document.getElementById('money');
-            var r = confirm('Xác nhận nạp 50K vào tài khoản?');
-            if (r == true) {
-                var code = prompt("Nhập mã OTP:", "");
-                if (code == null || code == "") {
-                    alert("Thất bại!")
-                } else if (code == "nam") {
-                    document.getElementById('money').innerHTML = Number(money.innerHTML) + 50000;
+    var r = confirm('Xác nhận nạp 50K vào tài khoản?');
+    if (r == true) {
+      var code = prompt("Nhập mã OTP:", "");
+      if (code == null || code == "") {
+        alert("Thất bại!")
+      } else if (code == "nam") {
+        var tien=50000;
 
-                    alert("thành công");
-                } else {
-                    alert("thất bại!");
-                }
-            }
-        };
-        function tanggt100() {
-            var money = document.getElementById('money');
-            var r = confirm('Xác nhận nạp 100K vào tài khoản?');
-            if (r == true) {
-                var code = prompt("Nhập mã OTP:", "");
-                if (code == null || code == "") {
-                    alert("Thất bại!")
-                } else if (code == "nam") {
-                    document.getElementById('money').innerHTML = Number(money.innerHTML) + 100000;
-                    alert("thành công");
-                } else {
-                    alert("thất bại!");
-                }
-            }
-        };
-        function tanggt200() {
-            var money = document.getElementById('money');
-            var r = confirm('Xác nhận nạp 200K vào tài khoản?');
-            if (r == true) {
-                var code = prompt("Nhập mã OTP:", "");
-                if (code == null || code == "") {
-                    alert("Thất bại!")
-                } else if (code == "nam") {
-                    document.getElementById('money').innerHTML = Number(money.innerHTML) + 200000;
-                    alert("thành công");
-                } else {
-                    alert("thất bại!");
-                }
-            }
-        };
-        function them() {
-            var money = document.getElementById('money');
-            var tien = document.getElementById('tien').value;
-            if (Number(tien) < 10000) {
-                alert('Số tiền nạp lớn hơn 10.000 vnd');
-                return false;
-            } else {
-                var r = confirm('Xác nhận nạp tiền vào tài khoản?');
-                if (r == true) {
-                    var code = prompt("Nhập mã OTP:", "");
-                    if (code == null || code == "") {
-                        alert("Thất bại!")
-                    } else if (code == "nam") {
-                        document.getElementById('money').innerHTML = Number(money.innerHTML) + Number(tien);
-                        document.getElementById('tien').value = "";
-                        alert("thành công");
-                    } else {
-                        alert("thất bại!");
-                    }
-                }
-            }
+        alert("thành công");
+        $.get(
+          '{{ url('updatevi') }}',
+          {id:id,vi:tien},
+          function () {
+           location.reload();
+         }
+         );
+      } else {
+        alert("thất bại!");
+      }
+    }
+  };
+  function tanggt100(id) {
+    var r = confirm('Xác nhận nạp 100K vào tài khoản?');
+    if (r == true) {
+      var code = prompt("Nhập mã OTP:", "");
+      if (code == null || code == "") {
+        alert("Thất bại!")
+      } else if (code == "nam") {
+        var tien=100000;
+        alert("thành công");
+        $.get(
+          '{{ url('updatevi') }}',
+          {id:id,vi:tien},
+          function () {
+           location.reload();
+         }
+         );
+      } else {
+        alert("thất bại!");
+      }
+    }
+  };
+  function tanggt200(id) {
+    var r = confirm('Xác nhận nạp 200K vào tài khoản?');
+    if (r == true) {
+      var code = prompt("Nhập mã OTP:", "");
+      if (code == null || code == "") {
+        alert("Thất bại!")
+      } else if (code == "nam") {
+        var tien=200000;
 
-        };
-        function trutien() {
-            var money = document.getElementById('money');
-            var r = confirm('Xác nhận đọc sách với giá 10.000 vnd?');
-            if(Number(money.innerHTML)<10000){
-                alert('Tài khoản của bạn không đủ để sử dụng tài liệu này, vui lòng nạp thêm tiền');
-                return false;
-            }
-            if (r == true) {
-                var code = prompt("Nhập lại mật khẩu:", "");
-                if (code == null || code == "") {
-                    alert("Thất bại!")
-                } else if (code == "matkhau") {
-                    document.getElementById('money').innerHTML = Number(money.innerHTML) - 10000;
-                    alert("thành công");
-                } else {
-                    alert("thất bại!");
-                }
-            }else {
-              return false;
-            }
+        alert("thành công");
+        $.get(
+          '{{ url('updatevi') }}',
+          {id:id,vi:tien},
+          function () {
+           location.reload();
+         }
+         );
+      } else {
+        alert("thất bại!");
+      }
+    }
+  };
+  function them(id) {
+    var money = document.getElementById('money');
+    var tien = document.getElementById('tien').value;        
+    if (Number(tien) < 10000) {
+      alert('Số tiền nạp lớn hơn 10.000 vnd');
+      return false;
+    } else {
+      var r = confirm('Xác nhận nạp tiền vào tài khoản?');
+      if (r == true) {
+        var code = prompt("Nhập mã OTP:", "");
+        if (code == null || code == "") {
+          alert("Thất bại!")
+        } else if (code == "nam") {
+          document.getElementById('money').innerHTML = Number(money.innerHTML) + Number(tien);
+          document.getElementById('tien').value = "";
+          alert("thành công");
+          $.get(
+            '{{ url('updatevi') }}',
+            {id:id,vi:tien},
+            function () {
+             location.reload();
+           }
+           );
+        } else {
+          alert("thất bại!");
         }
+      }
+    }
 
+  };
+  function trutien(id,iduser) {
+    var money = document.getElementById('money');
+    var price = document.getElementById('price');
+    var r = confirm('Xác nhận đọc sách với giá 10.000 vnd?');
+    if(Number(money.innerHTML)< Number(price.innerHTML)){
+      alert('Tài khoản của bạn không đủ để sử dụng tài liệu này, vui lòng nạp thêm tiền');
+      return false;
+    }
+    if (r == true) {
+      var code = prompt("Nhập lại mật khẩu:", "");
+      if (code == null || code == "") {
+        alert("Thất bại!")
+      } else if (code == "matkhau") {
+        var tien=Number(price.innerHTML);
+        alert("thành công");
+        $.get(
+          '{{ url('readbook') }}',
+          {id:id,read:tien,iduser:iduser},
+          function () {
+           location.reload();
+         }
+         );
+      } else {
+        alert("thất bại!");
+      }
+    }else {
+      return false;
+    }
+  }
 
-
-
-
-    </script>
+</script>

@@ -18,7 +18,7 @@ class PageController extends Controller
     {
         $cate=Category::all();
         $list=Product::where('id_user',1)->orwhere('id_user',3)
-            ->paginate(2);
+            ->paginate(12);
         if ($request->has('keyword')) {
             $keyword=$request->keyword;
             $list=Product::where('name','like','%'.$keyword.'%');

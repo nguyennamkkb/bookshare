@@ -17,6 +17,9 @@ Route::group(['prefix'=>'/'],function ()
 	Route::get('product/{id}/detail','customer\ProductController@detail');
 	Route::get('category/{id}','PageController@getCategory');
 	Route::get('booksharecus/{id}','customer\BookshareController@bookshop');
+	Route::get('updatevi','Admin\UserController@updateVi');
+	Route::get('readbook','Admin\UserController@readbook');
+
 
 	Route::group(['prefix'=>'cart'],function(){
 		Route::get('add/{id}','CartController@getAddCart');
@@ -35,6 +38,9 @@ Route::group(['prefix'=>'/'],function ()
 		Route::patch('customer/reviewct/{id}','customer\ProductController@postReview');
 		Route::get('customer/myorder','BillController@getMyOder');
 		Route::get('customer/detailod/{id}','BillController@getDetailOd');
+		Route::get('customer/profile/{id}/edit','Customer\ProfileController@edit');
+		Route::patch('customer/profile/{id}','Customer\ProfileController@update');
+
 
 	});
 

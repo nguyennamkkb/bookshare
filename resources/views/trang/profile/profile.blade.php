@@ -17,7 +17,7 @@
 
 					<div class="col-lg-6 col-12">
 						<div class="product__info__main">
-							<h1>{{$user->name}}
+							<h1>{{$user->name}}(<a href="{{url('customer/profile/'.$user->id.'/edit')}}" >edit</a>)
 							</h1>
 							<div class="product__overview" style="margin: 0;padding-top:10px;padding-bottom: 0">
 								Tên đầy đủ : {{$key->fullname}}
@@ -26,7 +26,7 @@
 								Giới tính : {{$key->sex}}
 							</div>
 							<div class="product__overview" style="margin: 0;padding-top: 10px;padding-bottom: 0">
-								Địa chỉ : {{$key->addres}}
+								Địa chỉ : {{$key->address}}
 							</div>
 							<div class="product__overview" style="margin: 0;padding-top: 10px;padding-bottom: 0">
 								Ngày sinh : {{$key->birthday}}

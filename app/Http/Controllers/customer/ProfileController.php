@@ -9,6 +9,7 @@ use App\Userdetail;
 use App\User;
 use App\Product;
 use App\Category;
+use Session;
 
 
 class ProfileController extends Controller
@@ -54,8 +55,8 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        
-        
+
+
     }
 
     /**
@@ -66,7 +67,13 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+         $cate=Category::all();
+         $userdt=Userdetail::where('id_user',$id)->firstOrFail();
+         return view('trang.profile.editprofile',[
+            'cate'=>$cate,
+            'detail'=>$userdt
+         ]);
+
     }
 
     /**
@@ -78,7 +85,24 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ud=Userdetail::findOrFail($id);
+        $id_user=$ud->id_user;
+        
+        $ud->fullname=$request->fullname;
+        $ud->sex=$request->sex;
+        $ud->address=$request->address;
+        $ud->birthday=$request->birthday;
+        $ud->phone_number=$request->phone_number;
+        if ($request->hasFile('image')) {
+            $file=$request->file('image');
+            $fileName=$file->getClientOriginalName();
+            $dir=public_path('uploads/user');
+            $file->move($dir,$fileName);
+            $ud->image=$fileName;
+        }
+        $ud->save();
+        Session::flash('succcess','Thay đổi thành công!');
+        return redirect('profile/'.$id_user.'/detail');
     }
 
     /**
@@ -97,11 +121,23 @@ class ProfileController extends Controller
         $user=Auth::user();
         $pro=Product::where('id_user',$id)->get();
         $userdetail=Userdetail::where('id_user','=',$id)->get();
+        if ($userdetail=='[]') {
+            $us = new Userdetail();
+            $us->id_user=$id;
+            $us->save();
+            return view('trang.profile.nhap',[
+                'cate'=>$cate,
+                'pro' => $pro
+            ]);
+
+        }
         return view('trang.profile.profile',[
             'user'=>$user,
             'userdt'=>$userdetail,
             'cate'=>$cate,
             'pro' => $pro
-    ]);
+        ]);
+
+        
     }
 }

@@ -20,13 +20,25 @@
 							<p style="font-size: 30px; font-weight: bold">	 {{$pro->name}}</p>
 							<br>
 							<div class="price-box">
-								<h5>Giá sách: <font color="#b93a3a">{{ number_format($pro->price)}} vnd</font> </h5>
+								<h5>Giá sách: <font color="#b93a3a" id="price">{{ number_format($pro->price)}} </font> <font color="#b93a3a"  >vnd</font>	 </h5>
 							</div>
 							<div class="box-tocart d-flex">
-								<button type="button" class="btn btn-success" onclick="trutien()"><a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a></button>
-								<button type="button" class="btn btn-warning" style=" margin-left: 20px;"><a href="{{ url('cart/add/'.$pro->id) }}" style="color: #FFFFFF;" >Mua sách</a></button>
+
+								@if (Auth::user())
+								<button type="button" class="btn btn-success" onclick="trutien('{{Auth::user()->id}}','{{$pro->id_user}}')" >{{-- <a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a> --}} doc sach
+								</button>
+								<button type="button" class="btn btn-warning" style=" margin-left: 20px;"><a href="{{ url('cart/add/'.$pro->id) }}" style="color: #FFFFFF;" >Mua sách</a>
+								</button>
+								@else
+
+								<button type="button" class="btn btn-info" ><a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc thử</a>
+								</button>
+								@endif
+
+
 								
-								
+
+
 
 							</div>
 							<div class="product_meta">
@@ -79,7 +91,7 @@
 
 
 									@foreach ($comment as $cm)
-									
+
 									<div class="rating-summary d-flex">
 										<font color="#2501FF" style="margin-right: 5px;padding-right: 5px;"><b>{{$cm->user->name  }} </b>:</font> <p> {{ $cm->comment}}</p>
 									</div>
@@ -102,7 +114,7 @@
 
 								<div class="input_box">
 									<textarea name="reviewct" class="form-control" rows="5" id="comment"></textarea>
-									
+
 								</div>
 								<div class="review-form-actions">
 									<br>

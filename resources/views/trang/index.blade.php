@@ -35,7 +35,7 @@
 
    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
     Giá  <span class="caret"></span></button>
-    <ul class="dropdown-menu" role="menu">
+    <ul class="dropdown-menu" role="menu" style="padding: 10px">
       <li><a href="{{ url('?sort=ASC')}}">Thấp - cao</a></li>
       <li><a href="{{ url('?sort=DESC')}}">Cao - thấp</a></li>
     </ul>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Userdetail;
 use Session;
@@ -103,8 +104,10 @@ class UserController extends Controller
     {
         $au=User::findOrFail($id);
         $au->delete();
-        Session::flash("Success"," Đã xóa thành công");
+        
         $ud=Userdetail::where('id_user','=',$id)->delete();
+
+        Session::flash("Success"," Đã xóa thành công");
         return redirect('admin/user');
     }
     public function detail($id)
@@ -118,7 +121,8 @@ class UserController extends Controller
             $us->save();
             return view('userdetail.nhap',[
                 'user'=>$user,
-                'list' =>$list,]);
+                'list' =>$list,
+            ]);
         }else{
             return view('userdetail.list',[
                 'user'=>$user,
@@ -132,5 +136,22 @@ class UserController extends Controller
     public function dangxuat()
     {
         echo "string";
+    }
+    public function updateVi(request $request){
+        $au=User::findOrFail($request->id);
+        $au->vi=$au->vi+$request->vi;
+        $au->save();
+    }
+    public function readbook(request $request){
+        //them tien vao tk chu
+        $iduser=$request->iduser;
+        $useradd=User::findOrFail($iduser);
+        $useradd->vi=$useradd->vi + $request->read;
+        $useradd->save();
+
+        //tru tien
+        $au=User::findOrFail($request->id);
+        $au->vi=$au->vi-$request->read;
+        $au->save();
     }
 }
