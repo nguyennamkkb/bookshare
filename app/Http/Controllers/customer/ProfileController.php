@@ -14,11 +14,6 @@ use Session;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         // $cate=Category::all();
@@ -141,7 +136,7 @@ class ProfileController extends Controller
             'cate'=>$cate,
             'pro' => $pro
         ]);
-
-        
+     
     }
+    
 }

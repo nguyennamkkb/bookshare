@@ -18,7 +18,7 @@ class PageController extends Controller
     {   $key=$request->keywordcate;
         
         $cate=Category::all();
-        $list=Product::where('id_status','=','1')->orWhere('name','like','%'.$key.'%')
+        $list=Product::where('id_status','=','1')
             ->paginate(6);
         if ($request->has('keyword')) {
             $keyword=$request->keyword;
