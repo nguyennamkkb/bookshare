@@ -35,6 +35,7 @@ Route::group(['prefix'=>'/'],function ()
 	{
 		Route::get('profile/{id}/detail','customer\ProfileController@profile');
 		Route::resource('customer/sharebook','customer\BookshareController');
+		Route::get('customer/book','customer\BookshareController@book');
 		Route::patch('customer/reviewct/{id}','customer\ProductController@postReview');
 		Route::get('customer/myorder','BillController@getMyOder');
 		Route::get('customer/detailod/{id}','BillController@getDetailOd');

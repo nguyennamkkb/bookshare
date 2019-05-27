@@ -231,6 +231,10 @@ class BookshareController extends Controller
         ]);
        
     }
+    public function book()
+    {
+        
+    }
     
 }
 

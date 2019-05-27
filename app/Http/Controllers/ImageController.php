@@ -13,7 +13,7 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    imgic function index( request $request)
+    function index( request $request)
     {
 
         $list=Image::orderBy('name','desc');
@@ -30,7 +30,7 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    imgic function create()
+    function create()
     {
         return view('image.create');
     }
@@ -41,7 +41,7 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    imgic function store(Request $request)
+    function store(Request $request)
     {
         $this->validate($request,[
            'name'=> 'required'
@@ -66,7 +66,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    imgic function show($id)
+    function show($id)
     {
         //
     }
@@ -77,7 +77,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    imgic function edit($id)
+   function edit($id)
     {
         $img=Image::findOrFail($id);;
 
@@ -93,7 +93,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    imgic function update(Request $request, $id)
+   function update(Request $request, $id)
     {
         $this->validate($request,[
             'name'=>'required',
@@ -117,7 +117,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    imgic function destroy($id)
+    function destroy($id)
     {
         $img=Image::findOrFail($id);
         $img->delete();
