@@ -30,6 +30,9 @@
             </li>
             @if (Route::has('login'))
             @if(Auth::user() !== null)
+            @if(Auth::user()->id_role > 1)
+            <li class=""><a href="{{ url('booksharecus/'.Auth::user()->id) }}">Sách được chia sẻ</a>
+            @endif
             @if (Auth::user()->id_role <> 2)
             <li class=""><a href="{{ url('booksharecus/'.Auth::user()->id) }}">My Shop</a>
               @endif
@@ -37,7 +40,7 @@
               
               @if(Auth::user() !== null)
 
-              <li class=""><a href="{{ url('customer/sharebook/create') }}">Share book</a>
+              <li class=""><a href="{{ url('customer/sharebook/create') }}">chia sẻ sách</a>
 
                 @endif
 

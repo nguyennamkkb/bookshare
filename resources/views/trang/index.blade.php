@@ -85,6 +85,6 @@
 @endforeach
 @endif
 </div>
-<div class="row" style="float: right;">{!!$list->links()!!}</div>
+<div class="row" style="float: right;">{!! $list->links()!!}</div>
 
 @endsection

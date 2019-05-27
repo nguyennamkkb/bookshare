@@ -25,15 +25,22 @@
 							<div class="box-tocart d-flex">
 
 								@if (Auth::user())
-								<button type="button" class="btn btn-success" onclick="trutien('{{Auth::user()->id}}','{{$pro->id_user}}')" >{{-- <a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a> --}} doc sach
+								<button type="button" class="btn btn-success" onclick="trutien('{{Auth::user()->id}}','{{$pro->id_user}}')" >
+									{{-- <a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a> --}}
+									 Đọc sách
 								</button>
+								@if($pro->user->id_role <> 2)
 								<button type="button" class="btn btn-warning" style=" margin-left: 20px;"><a href="{{ url('cart/add/'.$pro->id) }}" style="color: #FFFFFF;" >Mua sách</a>
 								</button>
-								@else
-
-								<button type="button" class="btn btn-info" ><a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc thử</a>
-								</button>
 								@endif
+								
+								
+								
+								@endif
+
+								<button type="button" class="btn btn-info" style="margin-left: 10px" ><a href="{{ url('uploads/bookdemo/'.$pro->bookdemo) }}" style="color: #FFFFFF" >Đọc thử</a>
+								</button>
+								
 
 
 								
