@@ -44,7 +44,7 @@
 		<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
 			<li><a href="{{ url('cart/delete/all') }}">Xóa giỏ hàng</a></li>
 			
-			<li><a href="{{ url('cart/checkout') }}">Thanh toán</a></li>
+		<li><a onclick="thanhtoan('{{Cart::total()}}','')" href="{{ url('cart/checkout') }}">Thanh toán</a></li>
 		</ul>
 	</div>
 </div>
