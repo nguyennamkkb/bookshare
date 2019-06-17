@@ -14,7 +14,7 @@ class IndexController extends Controller
      */
     public function index(request $request)
     {
-        $list=Product::where('price','>',0)->paginate(2);
+        $list=Product::where('price','>',0)->paginate(9);
         if ($request->has('keyword')) {
             $keyword=$request->keyword;
             $list=$list->where('name','like','%'.$keyword.'%');

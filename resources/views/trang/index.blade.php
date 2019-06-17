@@ -60,7 +60,7 @@
       <h4><a href="single-product.html">{{$key->name}}</a></h4>
       <ul class="prize d-flex">
         <li>{{ number_format($key->price)}} VND</li>
-       <li class="old_prize">$35.00</li>
+       
      </ul>
      <div class="action">
        <div class="actions_inner">

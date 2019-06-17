@@ -81,10 +81,12 @@
 
                   <div class="total_amount text-right">
 
-                    <span>{{Cart::total()}}</span>
+                    <span id="total">{{ substr(Cart::total(), 0,-3) }}</span>
 
                     <div class="mini_action checkout">
-                      <a class="checkout__btn" href="{{ url('cart/checkout') }}">Go to Checkout</a>
+                      <a class="checkout__btn" onclick="thanhtoan('{{(int)Cart::total()}}')" 
+                      {{-- href="{{ url('cart/checkout') }}" --}}
+                      >Go to Checkout</a>
                     </div>
 
                     <div class="single__items">
@@ -368,5 +370,16 @@
       return false;
     }
   }
+  function thanhtoan(total){
+    var money = document.getElementById('money');
+				var total=total+"000";
+				if(Number(total)<Number(money.innerHTML)){
+					window.location.href="{{ url('cart/checkout') }}";
+				
+				}else{
+					alert('Tài khoản của bạn không đủ để mua đơn hàng này, vui lòng nạp thêm tiền');
+      				return false;
+				}
 
+  }
 </script>
