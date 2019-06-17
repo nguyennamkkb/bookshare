@@ -379,15 +379,16 @@
     }
   }
   function thanhtoan(total){
-    var money = document.getElementById('money');
+				var money = document.getElementById('money');
 				var total=total+"000";
+				total=total.replace(',','')
 				if(Number(total)<Number(money.innerHTML)){
 					window.location.href="{{ url('cart/checkout') }}";
-				
+					console.log(Number(total))
 				}else{
 					alert('Tài khoản của bạn không đủ để mua đơn hàng này, vui lòng nạp thêm tiền');
-      				return false;
+					  return false;
 				}
 
-  }
+			}
 </script>

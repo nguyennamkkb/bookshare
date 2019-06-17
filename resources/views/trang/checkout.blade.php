@@ -12,7 +12,7 @@
 		<div class="customer_details">
 			<h3>Chi tiết thanh toán</h3>
 			<div class="customar__field">
-				<form action="{{ url('cart/checkout') }}" method="post" >
+				<form action="{{ url('cart/checkout') }}" method="post" onsubmit="return validateForm('{{substr(Cart::total(),0,-7)}}')" >
 					@csrf
 					<div class="margin_between">
 
@@ -55,7 +55,7 @@
 						</div>
 					</div>
 					<div class="input_box">
-						<button class="select__option btn-info">Xác nhận đặt hàng</button>
+						<button class="select__option btn-info" >Xác nhận đặt hàng</button>
 					</div>
 				</form>
 			</div>
@@ -92,4 +92,17 @@
 </div>
 </div>
 </section>
+<script>
+function validateForm(total){
+	var money = document.getElementById('money');
+				var total=total+"000";
+				total=total.replace(',','')
+				if(Number(total)<Number(money.innerHTML)){
+					return true;
+				}else{
+					alert('Tài khoản của bạn không đủ để mua đơn hàng này, vui lòng nạp thêm tiền');
+					  return false;
+				}
+}
+</script>
 @endsection

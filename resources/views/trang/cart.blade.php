@@ -44,8 +44,7 @@
 		<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
 			<li><a href="{{ url('cart/delete/all') }}">Xóa giỏ hàng</a></li>
 			
-		<li><a onclick="thanhtoan('{{(int)Cart::total()}}')" 
-			{{-- href="{{ url('cart/checkout') }}" --}}>Thanh toán</a></li>
+		<li><a onclick="thanhtoan('{{substr(Cart::total(),0,-7)}}')" >Thanh toán</a></li>
 		</ul>
 	</div>
 </div>
@@ -59,18 +58,7 @@
 					}
 					);
 			}
-			function thanhtoan(total){
-				var money = document.getElementById('money');
-				var total=total+"000";
-				if(Number(total)<Number(money.innerHTML)){
-					window.location.href="{{ url('cart/checkout') }}";
-				
-				}else{
-					alert('Tài khoản của bạn không đủ để mua đơn hàng này, vui lòng nạp thêm tiền');
-      				return false;
-				}
-
-			}
+			
 
 		</script>
 @endsection
