@@ -41,7 +41,7 @@
 					<tr>
 						<td>
 							{!!Form::submit('save',['class'=>'btn btn-info'])!!}
-							<a href="{{ url('admin/user/'.$detail->id_user.'/detail')}}">
+							<a href="{{ url('profile/'.$detail->id_user.'/detail')}}">
 								<button type="button" class="btn btn-default btn-sm">
 									Trở về
 								</button>

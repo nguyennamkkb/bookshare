@@ -9,6 +9,7 @@ use App\User;
 use App\Userdetail;
 use Session;
 use App\Role;
+use App\muasach;
 
 
 class UserController extends Controller
@@ -144,14 +145,29 @@ class UserController extends Controller
     }
     public function readbook(request $request){
         //them tien vao tk chu
+        
+        $money=round($request->read*0.7);
+        $tiencong=$request->read-$money;
+
         $iduser=$request->iduser;
         $useradd=User::findOrFail($iduser);
-        $useradd->vi=$useradd->vi + $request->read;
+        $useradd->vi=$useradd->vi + $money;
         $useradd->save();
 
         //tru tien
         $au=User::findOrFail($request->id);
         $au->vi=$au->vi-$request->read;
         $au->save();
+
+        //them vao admin
+        $idadmin=4;
+        $admin=User::findOrFail($idadmin);
+        $admin->vi=$admin->vi+$tiencong;
+        $admin->save();
+
+        $muasach= new muasach();
+        $muasach->user_id=$request->id;
+        $muasach->product_id=$request->product;
+        $muasach->save();
     }
 }

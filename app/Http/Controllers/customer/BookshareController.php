@@ -11,6 +11,7 @@ use App\Status_pro;
 use App\Category;
 use App\Author;
 use App\Product;
+use App\muasach;
 use App\User;
 use Session;
 
@@ -231,10 +232,17 @@ class BookshareController extends Controller
         ]);
        
     }
-    public function book()
-    {
-        
-    }
     
-}
+        public function book(Request $request)
+        {
+            $book=muasach::where('user_id','=',Auth::user()->id)->get();
+            return view('trang.book',[
+            'book'=>$book,
 
+
+        ]);
+            
+
+            
+        }
+}

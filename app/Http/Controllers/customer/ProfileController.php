@@ -14,11 +14,6 @@ use Session;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         // $cate=Category::all();
@@ -66,13 +61,17 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-         $cate=Category::all();
-         $userdt=Userdetail::where('id_user',$id)->firstOrFail();
-         return view('trang.profile.editprofile',[
+    {    if (Auth::user()->id==$id) {
+            $cate=Category::all();
+            $userdt=Userdetail::where('id_user',$id)->firstOrFail();
+            return view('trang.profile.editprofile',[
             'cate'=>$cate,
             'detail'=>$userdt
          ]);
+        }else {
+         return back();
+    }
+         
 
     }
 
@@ -137,7 +136,7 @@ class ProfileController extends Controller
             'cate'=>$cate,
             'pro' => $pro
         ]);
-
-        
+     
     }
+    
 }

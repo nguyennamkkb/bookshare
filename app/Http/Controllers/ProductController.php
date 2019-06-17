@@ -229,7 +229,7 @@ class ProductController extends Controller
         $product=Product::findOrFail($id);
         $product->id_status=1;
         $product->save();
-        return redirect('admin/product');
+        return redirect('admin/checkout');
     }
     
 }

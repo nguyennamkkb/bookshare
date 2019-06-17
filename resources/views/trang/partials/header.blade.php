@@ -30,6 +30,7 @@
             </li>
             @if (Route::has('login'))
             @if(Auth::user() !== null)
+           
             @if (Auth::user()->id_role <> 2)
             <li class=""><a href="{{ url('booksharecus/'.Auth::user()->id) }}">My Shop</a>
               @endif
@@ -37,7 +38,7 @@
               
               @if(Auth::user() !== null)
 
-              <li class=""><a href="{{ url('customer/sharebook/create') }}">Share book</a>
+              <li class=""><a href="{{ url('customer/sharebook/create') }}">chia sẻ sách</a>
 
                 @endif
 
@@ -176,7 +177,9 @@
                     <strong class="label switcher-label">
                       <ul>
                         <li><a href="{{ url('profile/'.Auth::user()->id.'/detail') }}">{{Auth::user()->name}}</a></li>
+                        <li><a href="{{ url('customer/book') }}">Sách PDF đã mua</a></li>
                         <li><a href="{{ url('customer/myorder') }}">Đơn hàng cùa tôi</a></li>
+                        
                       </ul>
 
 
@@ -341,14 +344,16 @@
     }
 
   };
-  function trutien(id,iduser) {
+  function trutien(id,iduser,tien,product,bookfull) {
     var money = document.getElementById('money');
     var price = document.getElementById('price');
-    var r = confirm('Xác nhận đọc sách với giá 10.000 vnd?');
+    
+    var r = confirm('Xác nhận đọc sách này?');
     if(Number(money.innerHTML)< Number(price.innerHTML)){
       alert('Tài khoản của bạn không đủ để sử dụng tài liệu này, vui lòng nạp thêm tiền');
       return false;
     }
+    
     if (r == true) {
       var code = prompt("Nhập lại mật khẩu:", "");
       if (code == null || code == "") {
@@ -358,9 +363,12 @@
         alert("thành công");
         $.get(
           '{{ url('readbook') }}',
-          {id:id,read:tien,iduser:iduser},
+          {id:id,iduser:iduser,read:tien,product:product},
           function () {
-           location.reload();
+            
+            var link = '{{ url('uploads/bookfull/')}}';
+            window.open(link+"/"+bookfull,'_blank');
+            location.reload();
          }
          );
       } else {

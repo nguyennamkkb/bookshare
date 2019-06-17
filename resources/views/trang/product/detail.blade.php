@@ -19,21 +19,38 @@
 						<div class="product__info__main">
 							<p style="font-size: 30px; font-weight: bold">	 {{$pro->name}}</p>
 							<br>
+							
+							@if($pro->user->id_role <> 1)
 							<div class="price-box">
-								<h5>Giá sách: <font color="#b93a3a" id="price">{{ number_format($pro->price)}} </font> <font color="#b93a3a"  >vnd</font>	 </h5>
+								<h5>Giá PDF: <font color="#b93a3a" id="price">{{$pro->price}} </font> <font color="#b93a3a"  >vnd</font>	 </h5>
 							</div>
+							@else
+							<div class="price-box">
+								<h5>Giá sách: <font color="#b93a3a" >{{$pro->price}} </font> <font color="#b93a3a"  >vnd</font>	 </h5>
+								<h5>Giá PDF: <font color="#b93a3a" id="price">{{$pro->price*0.3}} </font> <font color="#b93a3a"  >vnd</font>	 </h5>
+							</div>
+							@endif
 							<div class="box-tocart d-flex">
 
 								@if (Auth::user())
-								<button type="button" class="btn btn-success" onclick="trutien('{{Auth::user()->id}}','{{$pro->id_user}}')" >{{-- <a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a> --}} doc sach
+								<button type="button" class="btn btn-success" onclick="trutien('{{Auth::user()->id}}','{{$pro->id_user}}','{{$pro->price}}','{{$pro->id}}','{{$pro->bookfull
+								
+								}}')" >
+									{{-- <a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc sách</a> --}}
+									 Đọc PDF
 								</button>
+								@if($pro->user->id_role <> 2)
 								<button type="button" class="btn btn-warning" style=" margin-left: 20px;"><a href="{{ url('cart/add/'.$pro->id) }}" style="color: #FFFFFF;" >Mua sách</a>
 								</button>
-								@else
-
-								<button type="button" class="btn btn-info" ><a href="{{ url('uploads/bookfull/'.$pro->bookfull) }}" style="color: #FFFFFF" >Đọc thử</a>
-								</button>
 								@endif
+								
+								
+								
+								@endif
+
+								<button type="button" class="btn btn-info" style="margin-left: 10px" ><a href="{{ url('uploads/bookdemo/'.$pro->bookdemo) }}" style="color: #FFFFFF" >Đọc thử</a>
+								</button>
+								
 
 
 								
