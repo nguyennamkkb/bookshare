@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
 	{!! Form::model($user,['method'=>'patch','url'=>['admin/user',$user->id],'files'=>true])!!}
-	@include('user.form')
+	@include('user.form1')
 	{!!Form::close()!!}
 
 </div>

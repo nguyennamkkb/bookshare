@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Userdetail;
 use Session;
@@ -169,5 +170,27 @@ class UserController extends Controller
         $muasach->user_id=$request->id;
         $muasach->product_id=$request->product;
         $muasach->save();
+    }
+    public function createPduStudent(request $request){
+        return view('user.create');
+    }
+    public function storePduStudent(request $request){
+
+        $this->validate($request,[
+            'name'=> 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+           
+        ]);
+        $user= new User();
+        $user->name= $request->name;
+        $user->email= $request->email;
+        $user->password=Hash::make($request->password) ;
+        $user->id_role= 4;
+        $user->save();
+        Session::flash('succcess','Thêm mới thành công!');
+        return redirect('admin/user');
+
+
     }
 }

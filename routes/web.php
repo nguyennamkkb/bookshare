@@ -67,6 +67,10 @@ Route::group(['prefix'=>'/'],function ()
 		Route::resource('comment','CommentController');
 		Route::resource('image','ImageController');
 		Route::resource('user','Admin\UserController');
+
+		Route::get('pduStudent','Admin\UserController@createPduStudent');
+		Route::post('pduStudent/register','Admin\UserController@storePduStudent');
+
 		Route::resource('detail','UserdetailController');
 		Route::resource('product','ProductController');
 		Route::get('user/{id}/detail','Admin\UserController@detail');

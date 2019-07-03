@@ -47,9 +47,14 @@
 								
 								
 								@endif
-
+								@if(Auth::user()->id_role<>4)
 								<button type="button" class="btn btn-info" style="margin-left: 10px" ><a href="{{ url('uploads/bookdemo/'.$pro->bookdemo) }}" style="color: #FFFFFF" >Đọc thử</a>
 								</button>
+								@else
+								<button type="button" class="btn btn-info" style="margin-left: 10px" ><a href="{{ url('uploads/bookdemo/'.$pro->bookfull) }}" style="color: #FFFFFF" >PDU</a>
+								</button>
+								@endif			
+								
 								
 
 

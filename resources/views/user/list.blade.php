@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 @section('title') Admin|Tai khoản @endsection
+@section('title2')Thêm tài khoản học sinh Pdu
+<a href="{{ url("admin/pduStudent")}}"><button type="button" class="btn btn-default btn-sm">
+  <span class="glyphicon glyphicon-new-window"></span> Thêm mới
+</button>
+</a> 
+@endsection
 @section('success') 
 @if(Session::has('succcess'))
 <br>
